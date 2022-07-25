@@ -6,6 +6,6 @@ For more information on the underlying module, see the [File module](https://doc
 
 ::: code filepaths.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out filepaths.out :::

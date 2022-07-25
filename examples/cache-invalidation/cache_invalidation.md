@@ -7,6 +7,6 @@ For more information on the underlying module, see the [Cache module](https://do
 
 ::: code cache_invalidation.bal :::
 
-To run this sample use the `bal run` command.
+To run this sample, use the `bal run` command.
 
 ::: out cache_invalidation.out :::
