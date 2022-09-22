@@ -131,6 +131,7 @@ jobs:
 
       - name: Build and push docker image
         run: |
+          export DOCKER_CLI_EXPERIMENTAL=enabled
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
           cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
           docker build --no-cache=true --squash --build-arg BALLERINA_DIST=ballerina-$VERSION.zip -t ballerina/ballerina:$GIT_TAG  $DOCKER_REPO/base/docker/
