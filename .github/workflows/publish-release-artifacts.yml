@@ -5,7 +5,7 @@ on:
     inputs:
       release_version:
         description: 'Release Version e.g., 2201.1.1, 2201.1.1-rc1'
-        default: '2201.1.1'
+        default: '2201.2.1-rc1'
         required: true
 
 jobs:
@@ -23,9 +23,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
 
       - name: Set version env variable
         id: set-version
@@ -128,7 +125,7 @@ jobs:
 
       - name: Enable experimental functions
         run: |
-          echo '{ "experimental": "enabled" }' > ~/.docker/config.json
+          echo '{ "experimental": "enabled" }' > /etc/docker/daemon.json
           sudo systemctl restart docker
           docker version
 
