@@ -123,14 +123,18 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Enable experimental functions
-        run: |
-          sudo echo '{ "experimental": "enabled" }' > /etc/docker/daemon.json
-          sudo systemctl restart docker
-          docker version
+#      - name: Enable experimental functions
+#        run: |
+#          echo '{ "experimental": "enabled" }' > ~/.docker/config.json
+#          sudo systemctl restart docker
+#          docker version
 
       - name: Build and push docker image
         run: |
+          echo '{ "experimental": "enabled" }' > ~/.docker/config.json
+          sudo systemctl restart docker
+          docker version
+
           export DOCKER_CLI_EXPERIMENTAL=enabled
           DOCKER_REPO=${{ steps.process-docker.outputs.dockerRepo }}
           cp $VERSION/ballerina-$VERSION.zip $DOCKER_REPO/base/docker/
