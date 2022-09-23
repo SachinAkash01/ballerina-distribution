@@ -24,6 +24,9 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
       - name: Set version env variable
         id: set-version
         run: |
