@@ -18,13 +18,14 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17.0.7'
+          java-version: '17'
       - name: Get daily docker version
         id: version
         run: echo "::set-output name=version::$(date +'%Y-%m-%d')"
       - name: Get project version
         id: project-version
         run: |
+          java --version
           SHORT_VERSION=$((grep -w "version" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
           DIST_VERSION=$((grep -w "version" | cut -d= -f2 | xargs) < gradle.properties)
           LANG_VERSION=$((grep -w "ballerinaLangVersion" | cut -d= -f2 | cut -d- -f1 | xargs) < gradle.properties)
