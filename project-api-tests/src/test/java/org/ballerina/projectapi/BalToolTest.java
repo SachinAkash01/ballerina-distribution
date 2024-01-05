@@ -166,7 +166,8 @@ public class BalToolTest {
         }
     }
 
-    @Test(description = "Pull tool with a specific version", groups = {"pull"})
+    @Test(description = "Pull tool with a specific version",
+            dependsOnMethods = {"testPullToolAgainWithoutVersion"}, groups = {"pull"})
     public void testPullToolWithASpecificVersion() throws IOException, InterruptedException {
         String toolIdAndVersion = toolId + ":" + specificVersion;
         Process cmdExec = executeToolCommand(DISTRIBUTION_FILE_NAME, tempWorkspaceDirectory,
